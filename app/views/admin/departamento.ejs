@@ -48,19 +48,19 @@
     
     </div><!-- /.container -->
     <section>
-      <h2>Seção: Cadastro de cursos</h2>
-      <form>
+      <h2>Seção: Cadastro de Departamentos</h2>
+      <form action="/cadastro_de_departamentos/salvar" method="post">
         <fieldset>
-          <label for="nome">Curso:</label>
-          <input id="campo-nome-curso" type="text" placeholder="Digite o nome do curso">
+          <label for="nome">Nome do Departamento:</label>
+          <input id="Nome" name="Nome" type="text" placeholder="Digite o nome do Departamento">
         </fieldset>
         <fieldset>
-          <label for="carga-horaria">Carga horária:</label>
-          <input id="campo-carga" type="text" placeholder="Digite a carga horária do curso">
+          <label for="carga-horaria">Descrição do Departamento:</label>
+          <input id="Descricao" name="Descricao" type="text" placeholder="Digite a descrição do Departamento">
         </fieldset>
         <fieldset>
-          <label for="coordenador">Coordenador:</label>
-          <input id="campo-coordenador" type="text" placeholder="Digite o coordenador do curso">
+          <label for="coordenador">Nome do Diretor:</label>
+          <input id="Diretor" name="Diretor" type="text" placeholder="Digite o nome do diretor do Departamento">
         </fieldset>
         
         <button id="adicionar-curso" class="botao bto-principal">Adicionar</button>

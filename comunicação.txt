@@ -1,0 +1,1 @@
+falta aumentar o tamanho da caixa do select no admin, quando vai adicionar usuarios

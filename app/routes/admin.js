@@ -24,4 +24,12 @@ module.exports=function(application){
 		application.app.controllers.admin.lista_usuario(application,req,res);
 	});
 
+	application.get('/cadastro_de_departamentos',function(req,res){
+		application.app.controllers.admin.formulario_inclusao_departamento(application,req,res);
+	});
+
+	application.post('/cadastro_de_departamentos/salvar',function(req,res){
+		application.app.controllers.admin.formulario_inclusao_Departamento_salvar(application,req,res);
+	});
+
 }
