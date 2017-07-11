@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jul-2017 às 22:03
+-- Generation Time: 11-Jul-2017 às 20:13
 -- Versão do servidor: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `administrador` (
   `idAdministrador` int(11) NOT NULL,
   `Nome` varchar(70) NOT NULL,
-  `Data_Nascimento` varchar(45) DEFAULT NULL,
+  `Data_Nascimento` varchar(45) NOT NULL,
   `Cpf` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
   `Telefone` varchar(45) NOT NULL
@@ -43,15 +43,7 @@ CREATE TABLE `administrador` (
 
 INSERT INTO `administrador` (`idAdministrador`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`) VALUES
 (1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(2, 'leivi', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(3, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(4, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(5, 'José da Silva', 'ddd', '503.658.365-54', 'jose', '(85)986759565'),
-(6, 'José da Silva', 'ddd', '503.658.365-54', 'jose', '(85)986759565'),
-(7, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(8, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(9, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
-(10, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565');
+(2, 'José da Silva', 'rtrt', '503.658.365-54', 'jose', '(85)986759565');
 
 -- --------------------------------------------------------
 
@@ -63,9 +55,20 @@ CREATE TABLE `aluno` (
   `idAluno` int(11) NOT NULL,
   `Curso_idCurso` int(11) NOT NULL,
   `Nome` varchar(45) NOT NULL,
-  `Endereco` varchar(45) NOT NULL,
-  `Telefones` varchar(45) NOT NULL
+  `Data_Nascimento` varchar(45) NOT NULL,
+  `Cpf` varchar(45) NOT NULL,
+  `Email` varchar(45) NOT NULL,
+  `Telefone` varchar(45) NOT NULL,
+  `Endereco` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`idAluno`, `Curso_idCurso`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`, `Endereco`) VALUES
+(1, 1, 'Jose', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(2, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro');
 
 -- --------------------------------------------------------
 
@@ -146,6 +149,18 @@ CREATE TABLE `contato` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `coordenador`
+--
+
+CREATE TABLE `coordenador` (
+  `idCoordenador` int(11) NOT NULL,
+  `Professor_idProfessor` int(11) NOT NULL,
+  `Curso_que_coordena` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `curso`
 --
 
@@ -153,8 +168,17 @@ CREATE TABLE `curso` (
   `idCurso` int(11) NOT NULL,
   `Departamento_idDepartamento` int(11) NOT NULL,
   `Descricao` varchar(45) NOT NULL,
-  `Coordenador` varchar(45) NOT NULL
+  `Coordenador` varchar(45) NOT NULL,
+  `Carga_Horaria` int(11) NOT NULL,
+  `Nome` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`idCurso`, `Departamento_idDepartamento`, `Descricao`, `Coordenador`, `Carga_Horaria`, `Nome`) VALUES
+(1, 1, 'é muito bono', 'asdasdsda', 80, 'Engenharia');
 
 -- --------------------------------------------------------
 
@@ -174,8 +198,8 @@ CREATE TABLE `departamento` (
 --
 
 INSERT INTO `departamento` (`idDepartamento`, `Nome`, `Descricao`, `Diretor`) VALUES
-(1, 'Telemática', 'sadsaddasdas', 'Paulo'),
-(2, 'aurora', 'sadsaddasdas', 'Paulo');
+(1, 'Telemática', 'asdsad', 'Paulo'),
+(2, 'Teste', 'é muito bono 2, bono vox, kekeke', 'Paulo');
 
 -- --------------------------------------------------------
 
@@ -241,11 +265,23 @@ CREATE TABLE `professor` (
   `idProfessor` int(11) NOT NULL,
   `Departamento_idDepartamento` int(11) NOT NULL,
   `Nome` varchar(45) NOT NULL,
+  `Data_Nascimento` varchar(45) NOT NULL,
+  `Cpf` varchar(45) NOT NULL,
+  `Email` varchar(70) NOT NULL,
+  `Telefone` varchar(45) NOT NULL,
   `Endereco` varchar(45) NOT NULL,
-  `Telefones` varchar(45) NOT NULL,
-  `Titulacao` varchar(45) DEFAULT NULL,
-  `Cpf` varchar(45) NOT NULL
+  `Titulacao` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `professor`
+--
+
+INSERT INTO `professor` (`idProfessor`, `Departamento_idDepartamento`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`, `Endereco`, `Titulacao`) VALUES
+(1, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física'),
+(2, 1, 'José da Silva', 'ddd', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', NULL),
+(4, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', NULL),
+(5, 1, 'José da Silva4asasd', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física');
 
 -- --------------------------------------------------------
 
@@ -272,12 +308,22 @@ CREATE TABLE `secretaria` (
   `idSecretaria` int(11) NOT NULL,
   `Departamento_idDepartamento` int(11) NOT NULL,
   `Nome` varchar(70) NOT NULL,
-  `Telefone` varchar(45) NOT NULL,
-  `E-mail` varchar(45) NOT NULL,
+  `Data_Nascimento` date NOT NULL,
   `Cpf` varchar(45) NOT NULL,
-  `Endereco` varchar(45) NOT NULL,
-  `Data_Nascimento` date DEFAULT NULL
+  `Email` varchar(45) NOT NULL,
+  `Telefone` varchar(45) NOT NULL,
+  `Endereco` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `secretaria`
+--
+
+INSERT INTO `secretaria` (`idSecretaria`, `Departamento_idDepartamento`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`, `Endereco`) VALUES
+(1, 1, 'Paula', '0000-00-00', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(2, 1, 'Telemáticagg', '0000-00-00', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(3, 1, 'José da Silva', '2017-07-08', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(4, 1, 'José da Silva4', '2017-01-18', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro');
 
 -- --------------------------------------------------------
 
@@ -368,6 +414,14 @@ ALTER TABLE `contato`
   ADD KEY `fk_Contato_Departamento_idx` (`Departamento_idDepartamento`);
 
 --
+-- Indexes for table `coordenador`
+--
+ALTER TABLE `coordenador`
+  ADD PRIMARY KEY (`idCoordenador`),
+  ADD UNIQUE KEY `idCoordenador_UNIQUE` (`idCoordenador`),
+  ADD KEY `fk_Coordenador_Professor1_idx` (`Professor_idProfessor`);
+
+--
 -- Indexes for table `curso`
 --
 ALTER TABLE `curso`
@@ -456,12 +510,12 @@ ALTER TABLE `turma_na_sala`
 -- AUTO_INCREMENT for table `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `aula`
 --
@@ -478,10 +532,20 @@ ALTER TABLE `avaliacao`
 ALTER TABLE `calendario`
   MODIFY `idCalendario` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `contato`
+--
+ALTER TABLE `contato`
+  MODIFY `idContato` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `coordenador`
+--
+ALTER TABLE `coordenador`
+  MODIFY `idCoordenador` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `departamento`
 --
@@ -496,7 +560,7 @@ ALTER TABLE `disciplina`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `sala`
 --
@@ -506,7 +570,7 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT for table `secretaria`
 --
 ALTER TABLE `secretaria`
-  MODIFY `idSecretaria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSecretaria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `turma`
 --
@@ -547,6 +611,12 @@ ALTER TABLE `avaliacao`
 --
 ALTER TABLE `contato`
   ADD CONSTRAINT `fk_Contato_Departamento` FOREIGN KEY (`Departamento_idDepartamento`) REFERENCES `departamento` (`idDepartamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `coordenador`
+--
+ALTER TABLE `coordenador`
+  ADD CONSTRAINT `fk_Coordenador_Professor1` FOREIGN KEY (`Professor_idProfessor`) REFERENCES `professor` (`idProfessor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `curso`

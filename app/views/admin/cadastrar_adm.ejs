@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,9 +18,9 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 
-</head>
+  </head>
 
-<body>
+  <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
 
@@ -57,12 +57,34 @@
             <!--/.nav-collapse -->
         </div>
     </nav>
-
-
-    </div>
-    <!-- /.container -->
+    
+    </div><!-- /.container -->
     <section>
-        <img src="img/tela-inicial.png">
+      <h2>Seção: Cadastro Administrador</h2>
+      <form action="/cadastro_de_adm/salvar" method="post">
+        <fieldset>
+          <label for="nome">Nome:</label>
+          <input id="Nome" type="text" name="Nome" placeholder="Digite o nome do Administrador">
+        </fieldset>
+        <fieldset>
+          <label for="nascimento">Data de Nascimento:</label>
+          <input id="Data_Nascimento" type="text" name="Data_Nascimento" placeholder="Digite a data de nascimento do Administrador">
+        </fieldset>
+        <fieldset>
+          <label for="cpf">CPF:</label>
+          <input id="Cpf" type="text" name="Cpf" placeholder="Digite o CPF do Administrador">
+        </fieldset>
+        <fieldset>
+          <label for="email">E-MAIL:</label>
+          <input id="Email" type="text" name="Email" placeholder="Digite o e-mail do Administrador">
+        </fieldset>
+        <fieldset>
+          <label for="telefone">Telefone:</label>
+          <input id="Telefone" type="text" name="Telefone" placeholder="Digite o telefone do Administrador">
+        </fieldset>            
+        <button id="adicionar-usuario" type="submit" class="botao bto-principal">Adicionar</button>
+
+      </form>
 
     </section>
 
@@ -71,10 +93,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')
-    </script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>
