@@ -50,8 +50,55 @@ academicoDAO.prototype.getDepartamento=function (callback){
 }
 
 academicoDAO.prototype.getCurso=function (callback){
+
 	this._connection.query('select * FROM curso ORDER by Nome ASC',callback);
 }
+
+academicoDAO.prototype.NCursos=function (callback){
+	this._connection.query('SELECT COUNT(DISTINCT(Curso_idCurso)) AS Cursos from aluno',callback);
+}
+
+academicoDAO.prototype.getTodosAlunos=function (callback){
+	let teste='SELECT `aluno`.`Curso_idCurso`,`aluno`.`Nome`,`aluno`.`Email`,`curso`.`Nome` AS NomeDoCurso FROM aluno,curso WHERE (`curso`.`idCurso`=`aluno`.`Curso_idCurso`) ORDER BY `NomeDoCurso`,`aluno`.`Nome` ASC';
+	this._connection.query(teste,callback);
+}
+
+academicoDAO.prototype.NDepartamentosProfessor=function (callback){
+	this._connection.query('SELECT COUNT(DISTINCT(Departamento_idDepartamento)) AS Departamentos from professor',callback);
+}
+
+academicoDAO.prototype.getTodosProfessores=function (callback){
+	let teste='SELECT `professor`.`Departamento_idDepartamento`,`professor`.`Telefone`,`professor`.`Nome`,`professor`.`Email`,`departamento`.`Nome` AS NomeDoDepartamento FROM professor,departamento WHERE (`departamento`.`idDepartamento`=`professor`.`Departamento_idDepartamento`) ORDER BY `NomeDoDepartamento`,`professor`.`Nome` ASC';
+	this._connection.query(teste,callback);
+}
+
+
+academicoDAO.prototype.NDepartamentosSecretaria=function (callback){
+	this._connection.query('SELECT COUNT(DISTINCT(Departamento_idDepartamento)) AS Departamentos from secretaria',callback);
+}
+
+academicoDAO.prototype.getTodasSecretarias=function (callback){
+	let teste='SELECT `secretaria`.`Departamento_idDepartamento`,`secretaria`.`Telefone`,`secretaria`.`Nome`,`secretaria`.`Email`,`departamento`.`Nome` AS NomeDoDepartamento FROM secretaria,departamento WHERE (`departamento`.`idDepartamento`=`secretaria`.`Departamento_idDepartamento`) ORDER BY `NomeDoDepartamento`,`secretaria`.`Nome` ASC';
+	this._connection.query(teste,callback);
+}
+
+academicoDAO.prototype.NDepartamentosCurso=function (callback){
+	this._connection.query('SELECT COUNT(DISTINCT(Departamento_idDepartamento)) AS Departamentos from curso',callback);
+}
+
+academicoDAO.prototype.getTodosCursos=function (callback){
+	let teste='SELECT `curso`.`Departamento_idDepartamento`,`curso`.`Nome`,`curso`.`Carga_Horaria`,`departamento`.`Nome` AS NomeDoDepartamento FROM curso,departamento WHERE (`departamento`.`idDepartamento`=`curso`.`Departamento_idDepartamento`) ORDER BY `NomeDoDepartamento`,`curso`.`Nome` ASC';
+	this._connection.query(teste,callback);
+}
+
+
+
+
+academicoDAO.prototype.getTodosAdm=function (callback){
+	let teste='SELECT * FROM `administrador` ORDER BY `administrador`.`Nome` ASC';
+	this._connection.query(teste,callback);
+}
+
 
 academicoDAO.prototype.salvarNoticia=function (noticia, callback){
 	this._connection.query('insert into noticias set ? ', noticia, callback);

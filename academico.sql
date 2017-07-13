@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jul-2017 às 20:13
+-- Generation Time: 13-Jul-2017 às 04:55
 -- Versão do servidor: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -42,7 +42,7 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`idAdministrador`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`) VALUES
-(1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
+(1, 'Adalberto', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565'),
 (2, 'José da Silva', 'rtrt', '503.658.365-54', 'jose', '(85)986759565');
 
 -- --------------------------------------------------------
@@ -68,7 +68,13 @@ CREATE TABLE `aluno` (
 
 INSERT INTO `aluno` (`idAluno`, `Curso_idCurso`, `Nome`, `Data_Nascimento`, `Cpf`, `Email`, `Telefone`, `Endereco`) VALUES
 (1, 1, 'Jose', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
-(2, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro');
+(2, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(3, 2, 'felipe', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(4, 2, 'amaury', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(5, 1, 'cesar', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(6, 2, 'zeta', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(7, 2, 'Fernando Felipe', '28/12/1982', '503.658.365-54', 'fernandinho@gmail.com', '(85)986759565', 'rua logradouro'),
+(8, 3, 'Teste', '28/12/2017', '503.658.365-54', 'fernandinho@gmail.com', '(85)986759565', 'rua logradouro');
 
 -- --------------------------------------------------------
 
@@ -178,7 +184,10 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`idCurso`, `Departamento_idDepartamento`, `Descricao`, `Coordenador`, `Carga_Horaria`, `Nome`) VALUES
-(1, 1, 'é muito bono', 'asdasdsda', 80, 'Engenharia');
+(1, 1, 'é muito bono', 'asdasdsda', 80, 'Engenharia'),
+(2, 1, 'asdsdasda', 'asdsadasdas', 80, 'Computação'),
+(3, 1, 'sadsaddasdas', 'asdasdsda', 80, 'Edificações'),
+(4, 2, 'é muito bono', 'asdasdsda', 80, 'Engenharia Ambiental');
 
 -- --------------------------------------------------------
 
@@ -281,7 +290,8 @@ INSERT INTO `professor` (`idProfessor`, `Departamento_idDepartamento`, `Nome`, `
 (1, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física'),
 (2, 1, 'José da Silva', 'ddd', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', NULL),
 (4, 1, 'José da Silva', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', NULL),
-(5, 1, 'José da Silva4asasd', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física');
+(5, 1, 'José da Silva4asasd', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física'),
+(6, 2, 'Teste', '28/12/2017', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro', 'professor de física');
 
 -- --------------------------------------------------------
 
@@ -323,7 +333,8 @@ INSERT INTO `secretaria` (`idSecretaria`, `Departamento_idDepartamento`, `Nome`,
 (1, 1, 'Paula', '0000-00-00', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
 (2, 1, 'Telemáticagg', '0000-00-00', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
 (3, 1, 'José da Silva', '2017-07-08', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
-(4, 1, 'José da Silva4', '2017-01-18', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro');
+(4, 1, 'José da Silva4', '2017-01-18', '503.658.365-54', 'jose', '(85)986759565', 'rua logradouro'),
+(5, 2, 'Paulinha', '2017-07-04', '503.658.365-54', 'paulinha@gmail.com', '(85)986759565', 'rua logradouro');
 
 -- --------------------------------------------------------
 
@@ -515,7 +526,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT for table `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `aula`
 --
@@ -545,7 +556,7 @@ ALTER TABLE `coordenador`
 -- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `departamento`
 --
@@ -560,7 +571,7 @@ ALTER TABLE `disciplina`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `sala`
 --
@@ -570,7 +581,7 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT for table `secretaria`
 --
 ALTER TABLE `secretaria`
-  MODIFY `idSecretaria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idSecretaria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `turma`
 --

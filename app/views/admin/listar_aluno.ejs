@@ -2,31 +2,6 @@
 <html lang="en">
 
 <head>
-    <style>
-        .select-estiloso {
-            /* <div> */
-            width: 500px;
-            height: 34px;
-            overflow: hidden;
-            background: url(img/arrow.jpg) no-repeat right #fff;
-            /* novo ícone para o <select> */
-            border: 1px solid #ccc;
-        }
-        
-        .select-estiloso select {
-            /* <select> */
-            background: transparent;
-            /* importante para exibir o novo ícone */
-            width: 500px;
-            padding: 5px;
-            font-size: 16px;
-            line-height: 1;
-            border: 0;
-            border-radius: 0;
-            height: 34px;
-            -webkit-appearance: none;
-        }
-    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,48 +68,46 @@
         </div>
     </nav>
 
+
     </div>
     <!-- /.container -->
     <section>
-        <h2>Seção: Cadastro Aluno</h2>
-        <form action="/cadastro_aluno/salvar" method="post">
-            <fieldset>
-                <label for="nome">Nome:</label>
-                <input id="Nome" type="text" name="Nome" placeholder="Digite o nome do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="nascimento">Data de Nascimento:</label>
-                <input id="Data_Nascimento" type="text" name="Data_Nascimento" placeholder="Digite a data de nascimento do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="cpf">CPF:</label>
-                <input id="Cpf" type="text" name="Cpf" placeholder="Digite o CPF do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="email">E-MAIL:</label>
-                <input id="Email" type="text" name="Email" placeholder="Digite o e-mail do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="telefone">Telefone:</label>
-                <input id="Telefone" type="text" name="Telefone" placeholder="Digite o telefone do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="Endereco">Endereço:</label>
-                <input id="Endereco" type="text" name="Endereco" placeholder="Digite o endereço do Aluno">
-            </fieldset>
-            <fieldset>
-                <label for="Curso_idCurso">Curso:</label>
-                <div class="select-estiloso">
-                    <select id="Curso_idCurso" name="Curso_idCurso">
-            <%for (var i=0; i<Object.keys(cursos).length;i++) {%>
-            <option value="<%=cursos[i].idCurso%>"><%=cursos[i].Nome%></option>
-            <%}%>
-          </select>
-                </div>
-            </fieldset>
-            <button id="adicionar-usuario" type="submit" class="botao bto-principal">Adicionar</button>
+        <h2>Seção: Listagem de Alunos</h2>
 
-        </form>
+        <div><br></div>
+        <%var j= 0 %>
+        <!--Levi, a tabela começa desse div -->
+        <%for (var i=0; i<Numero[0].Cursos;i++) {%>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <%if (j<Object.keys(alunos).length){%>
+                <%var nomedocurso=alunos[j].NomeDoCurso%>
+                <%var nomedocurso2=alunos[j].NomeDoCurso%>
+            <%}%>
+            <div class="panel-heading">Curso: <%=alunos[j].NomeDoCurso%></div>
+            
+            <!-- Table -->
+            <table class="table">
+                <tr>
+                    <th>Nome do Aluno</th>
+                    <th>E-MAIL</th>
+                </tr>
+
+                <%while( nomedocurso==nomedocurso2&&j<Object.keys(alunos).length) {%>
+                <tr>
+                    <td><%=alunos[j].Nome%></td>
+                    <td><%=alunos[j].Email%></td>
+                </tr>
+                
+                <% j=j+1 %>
+                <%if (j<Object.keys(alunos).length){%>
+                    <%var nomedocurso2=alunos[j].NomeDoCurso%>
+                <%}%>
+                
+                <%}%>
+            </table>
+        </div>
+        <%}%>
 
     </section>
 
